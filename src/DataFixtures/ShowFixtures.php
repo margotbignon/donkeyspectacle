@@ -90,7 +90,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
         /** @var \App\Entity\Artist $gcm */
         $gcm = $this->getReference(ArtistFixtures::ARTIST6);
         $show6
-            ->setName('Tournéee')
+            ->setName('Tournée')
             ->setDescription('n septembre 2020, Fabien Marsaud, alias Grand Corps Malade, fit son grand retour avec la sortie de Mesdames, un nouvel album en forme d’hommage aux femmes, composé de 10 duos avec notamment Véronique Sanson, Suzane, Laura Smet ou encore Julie et Camille Berthollet. Un projet qui rencontra un succès populaire et critique, grâce à des titres forts tels que "Derrière le brouillard" avec Louane et "Mais je t’aime" avec Camille Lellouche, élue chanson originale de l’année aux Victoires de la Musique 2021. 
             Dans la foulée, Grand Corps Malade a dévoilé un morceau inédit intitulé "Pas essentiel". Il qui annonçait à la fois une nouvelle tournée s’étalant de 2021 à 2022 tout en mettant les projecteurs sur la situation difficile des artistes et de la Culture en général suite aux restrictions sanitaires imposées par la propagation de la COVID-19.')
             ->setMedia('gcm.jpeg')
