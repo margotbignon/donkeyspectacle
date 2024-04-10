@@ -9,6 +9,30 @@ use Doctrine\Persistence\ObjectManager;
 
 class ShowFixtures extends Fixture implements DependentFixtureInterface
 {
+    public const SHOW1 = 'SHOW1';
+    public const SHOW2 = 'SHOW2';
+    public const SHOW3 = 'SHOW3';
+    public const SHOW4 = 'SHOW4';
+    public const SHOW5 = 'SHOW5';
+    public const SHOW6 = 'SHOW6';
+    public const SHOW7 = 'SHOW7';
+    public const SHOW8 = 'SHOW8';
+    public const SHOW9 = 'SHOW9';
+    public const SHOW10 = 'SHOW10';
+    public const SHOW11 = 'SHOW11';
+    public const SHOW12 = 'SHOW12';
+    public const SHOW13 = 'SHOW13';
+    public const SHOW14 = 'SHOW14';
+    public const SHOW15 = 'SHOW15';
+    public const SHOW16 = 'SHOW16';
+    public const SHOW17 = 'SHOW17';
+    public const SHOW18 = 'SHOW18';
+    public const SHOW19 = 'SHOW19';
+    public const SHOW20 = 'SHOW20';
+    public const SHOW21 = 'SHOW21';
+    public const SHOW22 = 'SHOW22';
+    public const SHOW23 = 'SHOW23';
+
     public function load(ObjectManager $manager): void
     {
 
@@ -39,6 +63,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($varietyfr)
             ->setArtist($mae);
         $manager->persist($show1);
+        $this->addReference(self::SHOW1, $show1);
 
         $show2= new Show();
         /** @var \App\Entity\Artist $calogero */
@@ -51,6 +76,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($varietyfr)
             ->setArtist($calogero);
         $manager->persist($show2);
+        $this->addReference(self::SHOW2, $show2);
 
         $show3= new Show();
         /** @var \App\Entity\Artist $pomme */
@@ -62,6 +88,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($varietyfr)
             ->setArtist($pomme);
         $manager->persist($show3);
+        $this->addReference(self::SHOW3, $show3);
 
         $show4 = new Show();
         /** @var \App\Entity\Artist $renaud */
@@ -74,6 +101,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($varietyfr)
             ->setArtist($renaud);
         $manager->persist($show4);
+        $this->addReference(self::SHOW4, $show4);
 
         $show5 = new Show();
         /** @var \App\Entity\Artist $julien */
@@ -85,6 +113,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($varietyfr)
             ->setArtist($julien);
         $manager->persist($show5);
+        $this->addReference(self::SHOW5, $show5);
 
         $show6 = new Show();
         /** @var \App\Entity\Artist $gcm */
@@ -97,6 +126,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($rap)
             ->setArtist($gcm);
         $manager->persist($show6);
+        $this->addReference(self::SHOW6, $show6);
 
         $show7 = new Show();
         /** @var \App\Entity\Artist $plk */
@@ -111,6 +141,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($rap)
             ->setArtist($plk);
         $manager->persist($show7);
+        $this->addReference(self::SHOW7, $show7);
 
         $show8 = new Show();
         /** @var \App\Entity\Artist $bigflo */
@@ -122,6 +153,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($rap)
             ->setArtist($bigflo);
         $manager->persist($show8);
+        $this->addReference(self::SHOW8, $show8);
 
         $show9 = new Show();
         /** @var \App\Entity\Artist $josman */
@@ -133,6 +165,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($rap)
             ->setArtist($josman);
         $manager->persist($show9);
+        $this->addReference(self::SHOW9, $show9);
 
         $show10 = new Show();
         /** @var \App\Entity\Artist $shaka */
@@ -144,6 +177,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($rock)
             ->setArtist($shaka);
         $manager->persist($show10);
+        $this->addReference(self::SHOW10, $show10);
 
         $show11 = new Show();
         /** @var \App\Entity\Artist $yodelice */
@@ -155,6 +189,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($rock)
             ->setArtist($yodelice);
         $manager->persist($show11);
+        $this->addReference(self::SHOW11, $show11);
 
         $show12 = new Show();
         /** @var \App\Entity\Artist $chris */
@@ -167,6 +202,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($rock)
             ->setArtist($chris);
         $manager->persist($show12);
+        $this->addReference(self::SHOW12, $show12);
 
         $show13 = new Show();
         /** @var \App\Entity\Artist $ibrahim */
@@ -180,6 +216,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($jazz)
             ->setArtist($ibrahim);
         $manager->persist($show13);
+        $this->addReference(self::SHOW13, $show13);
 
         $show14 = new Show();
         /** @var \App\Entity\Artist $pepper */
@@ -193,6 +230,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($jazz)
             ->setArtist($pepper);
         $manager->persist($show14);
+        $this->addReference(self::SHOW14, $show14);
         
         $show15 = new Show();
         /** @var \App\Entity\Artist $lynshow */
@@ -204,6 +242,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($cabaret)
             ->setArtist($lynshow);
         $manager->persist($show15);
+        $this->addReference(self::SHOW15, $show15);
 
         $show16 = new Show();
         /** @var \App\Entity\Artist $licques */
@@ -215,6 +254,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($cabaret)
             ->setArtist($licques);
         $manager->persist($show16);
+        $this->addReference(self::SHOW16, $show16);
 
         $show17 = new Show();
         /** @var \App\Entity\Artist $roiLion */
@@ -228,6 +268,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($bigShow)
             ->setArtist($roiLion);
         $manager->persist($show17);
+        $this->addReference(self::SHOW17, $show17);
 
         $show18 = new Show();
         /** @var \App\Entity\Artist $patrick */
@@ -245,6 +286,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($comedy)
             ->setArtist($patrick);
         $manager->persist($show18);
+        $this->addReference(self::SHOW18, $show18);
 
         $show19 = new Show();
         /** @var \App\Entity\Artist $portner */
@@ -259,6 +301,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($comedy)
             ->setArtist($portner);
         $manager->persist($show19);
+        $this->addReference(self::SHOW19, $show19);
 
         $show20 = new Show();
         /** @var \App\Entity\Artist $alan */
@@ -277,6 +320,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($comedy)
             ->setArtist($alan);
         $manager->persist($show20);
+        $this->addReference(self::SHOW20, $show20);
 
         $show21 = new Show();
         /** @var \App\Entity\Artist $mirabel */
@@ -289,6 +333,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($oneman)
             ->setArtist($mirabel);
         $manager->persist($show21);
+        $this->addReference(self::SHOW21, $show21);
         
         $show22 = new Show();
         /** @var \App\Entity\Artist $reg */
@@ -303,6 +348,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($oneman)
             ->setArtist($reg);
         $manager->persist($show22);
+        $this->addReference(self::SHOW22, $show22);
 
         $show23 = new Show();
         /** @var \App\Entity\Artist $keirhon */
@@ -317,6 +363,7 @@ class ShowFixtures extends Fixture implements DependentFixtureInterface
             ->setCategory($oneman)
             ->setArtist($keirhon);
         $manager->persist($show23);
+        $this->addReference(self::SHOW23, $show23);
 
         $manager->flush();
     }
