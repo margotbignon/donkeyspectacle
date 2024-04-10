@@ -7,10 +7,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 #[ORM\Entity(repositoryClass: EventRepository::class)]
 class Event
 {
+
+    use TimestampableEntity;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -24,8 +28,6 @@ class Event
     #[ORM\JoinColumn(nullable: false)]
     private ?Placement $placement = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     private ?\DateTimeInterface $time = null;
@@ -33,14 +35,18 @@ class Event
     #[ORM\Column]
     private ?float $price = null;
 
-    #[ORM\Column]
-    private ?int $totalCapacity = null;
 
     /**
      * @var Collection<int, Booking>
      */
     #[ORM\OneToMany(targetEntity: Booking::class, mappedBy: 'event', orphanRemoval: true)]
     private Collection $bookings;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $startDate = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $endDate = null;
 
     public function __construct()
     {
@@ -76,17 +82,6 @@ class Event
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
-
-    public function setDate(\DateTimeInterface $date): static
-    {
-        $this->date = $date;
-
-        return $this;
-    }
 
     public function getTime(): ?\DateTimeInterface
     {
@@ -112,17 +107,6 @@ class Event
         return $this;
     }
 
-    public function getTotalCapacity(): ?int
-    {
-        return $this->totalCapacity;
-    }
-
-    public function setTotalCapacity(int $totalCapacity): static
-    {
-        $this->totalCapacity = $totalCapacity;
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Booking>
@@ -150,6 +134,30 @@ class Event
                 $booking->setEvent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getStartDate(): ?\DateTimeInterface
+    {
+        return $this->startDate;
+    }
+
+    public function setStartDate(\DateTimeInterface $startDate): static
+    {
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    public function getEndDate(): ?\DateTimeInterface
+    {
+        return $this->endDate;
+    }
+
+    public function setEndDate(\DateTimeInterface $endDate): static
+    {
+        $this->endDate = $endDate;
 
         return $this;
     }

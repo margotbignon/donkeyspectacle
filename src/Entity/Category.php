@@ -2,16 +2,18 @@
 
 namespace App\Entity;
 
+
 use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
 {
+
     use TimestampableEntity;
 
     #[ORM\Id]
@@ -22,14 +24,12 @@ class Category
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'parent')]
-    private ?self $children = null;
+    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'children')]
+    #[ORM\JoinColumn(onDelete: 'SET NULL')]
+    private ?self $parent = null;
 
-    /**
-     * @var Collection<int, self>
-     */
-    #[ORM\OneToMany(targetEntity: self::class, mappedBy: 'children')]
-    private Collection $parent;
+    #[ORM\OneToMany(mappedBy: 'parent', targetEntity: self::class)]
+    private Collection $children;
 
     #[ORM\Column(length: 255, unique: true)]
     #[Gedmo\Slug(fields: ['name'], updatable: false)]
@@ -43,7 +43,7 @@ class Category
 
     public function __construct()
     {
-        $this->parent = new ArrayCollection();
+        $this->children = new ArrayCollection();
         $this->shows = new ArrayCollection();
     }
 
@@ -64,14 +64,14 @@ class Category
         return $this;
     }
 
-    public function getChildren(): ?self
+    public function getParent(): ?self
     {
-        return $this->children;
+        return $this->parent;
     }
 
-    public function setChildren(?self $children): static
+    public function setParent(?self $parent): static
     {
-        $this->children = $children;
+        $this->parent = $parent;
 
         return $this;
     }
@@ -79,32 +79,33 @@ class Category
     /**
      * @return Collection<int, self>
      */
-    public function getParent(): Collection
+    public function getChildren(): Collection
     {
-        return $this->parent;
+        return $this->children;
     }
 
-    public function addParent(self $parent): static
+    public function addChild(self $child): static
     {
-        if (!$this->parent->contains($parent)) {
-            $this->parent->add($parent);
-            $parent->setChildren($this);
+        if (!$this->children->contains($child)) {
+            $this->children->add($child);
+            $child->setParent($this);
         }
 
         return $this;
     }
 
-    public function removeParent(self $parent): static
+    public function removeChild(self $child): static
     {
-        if ($this->parent->removeElement($parent)) {
+        if ($this->children->removeElement($child)) {
             // set the owning side to null (unless already changed)
-            if ($parent->getChildren() === $this) {
-                $parent->setChildren(null);
+            if ($child->getParent() === $this) {
+                $child->setParent(null);
             }
         }
 
         return $this;
     }
+
 
     public function getSlug(): ?string
     {
