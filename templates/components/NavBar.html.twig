@@ -1,0 +1,78 @@
+<div{{ attributes }}>
+  <nav class="navbar navbar-expand-lg navbar-light bg-secondary d-flex">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+    <a class="navbar-brand text-white" href="#">DonkeySpectacle</a>
+      <ul class="navbar-nav d-flex justify-content-between flex-row">
+        <li class="nav-item d-flex">
+          <i class="bi bi-person-fill text-white mt-2"></i>
+          <a class="nav-link text-white ms-1" href="#">Se connecter
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white ms-3" href="#"><i class="bi bi-cart-fill text-white"></i></a>
+        </li>
+      </ul>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    </div>
+
+  </nav>
+  <nav class="navbar navbar-categories navbar-expand-lg navbar-light navbar-color">
+    <div class="container-fluid">
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown ms-5">
+            <a class="nav-link text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Concert
+            </a>
+            <ul class="dropdown-menu text-white d-none categories-dropdown" aria-labelledby="navbarDropdown">
+              {% for category in categories %}
+                {% if category.parent != null and category.parent.slug == 'concert' %}
+                  <li><a class="dropdown-item" href="#">{{ category.name }}</a></li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </li>
+          <li class="nav-item dropdown ms-5">
+            <a class="nav-link text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Spectacle
+            </a>
+            <ul class="dropdown-menu text-white" aria-labelledby="navbarDropdown">
+                {% for category in categories %}
+                  {% if category.parent != null and category.parent.slug == 'spectacle' %}
+                    <li><a class="dropdown-item" href="#">{{ category.name }}</a></li>
+                  {% endif %}
+                {% endfor %}
+            </ul>
+          </li>
+          <li class="nav-item dropdown ms-5">
+            <a class="nav-link text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Théâtre et Humour
+            </a>
+            <ul class="dropdown-menu text-white" aria-labelledby="navbarDropdown">
+                {% for category in categories %}
+                  {% if category.parent != null and category.parent.slug == 'humour-et-theatre' %}
+                    <li><a class="dropdown-item" href="#">{{ category.name }}</a></li>
+                  {% endif %}
+                {% endfor %}
+            </ul>
+          </li>
+          <li class="nav-item ms-5">
+            <a class="nav-link text-white" href="#">Blog</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <div class="input-group flex-nowrap">
+            <input class="form-control me-2 search-input" type="search" placeholder="Évènement ou artiste..." aria-label="Search" style="width:400px; padding-right: 38px;">
+            <span class="input-group-text ms-n2">
+              <i class="bi bi-search"></i>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </nav>
+</div>
+

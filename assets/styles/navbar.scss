@@ -1,0 +1,22 @@
+.navbar-color {
+    background-color:$secondary
+}
+
+.search-input {
+    margin:auto;
+}
+
+
+.navbar-categories a:hover {
+    color: $secondary !important;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block !important;
+}
+
+@media screen and (min-width: 992px) {
+    .navbar-color {
+        background-color: $primary;
+    }
+}
