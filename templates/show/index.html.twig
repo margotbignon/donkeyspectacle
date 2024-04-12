@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ShowController!{% endblock %}
+
+{% block body %}
+{% for show in shows %}
+{{dump (show.name)}}
+{% endfor %}
+{% endblock %}

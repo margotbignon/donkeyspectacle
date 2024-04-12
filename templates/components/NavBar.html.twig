@@ -28,9 +28,10 @@
               Concert
             </a>
             <ul class="dropdown-menu text-white d-none categories-dropdown" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{{ path('app_maincategory', {slug: 'concert'} ) }}">Tous les concerts</a></li>
               {% for category in categories %}
                 {% if category.parent != null and category.parent.slug == 'concert' %}
-                  <li><a class="dropdown-item" href="#">{{ category.name }}</a></li>
+                  <li><a class="dropdown-item" href="{{ path('app_maincategory_category', {parent_slug : category.parent.slug, slug: category.slug} ) }}">{{ category.name }}</a></li>
                 {% endif %}
               {% endfor %}
             </ul>
@@ -40,21 +41,23 @@
               Spectacle
             </a>
             <ul class="dropdown-menu text-white" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{{ path('app_maincategory', {slug: 'spectacle'} ) }}">Tous les spectacles</a></li>
                 {% for category in categories %}
                   {% if category.parent != null and category.parent.slug == 'spectacle' %}
-                    <li><a class="dropdown-item" href="#">{{ category.name }}</a></li>
+                    <li><a class="dropdown-item" href="{{ path('app_maincategory_category', {parent_slug : category.parent.slug, slug: category.slug} ) }}">{{ category.name }}</a></li>
                   {% endif %}
                 {% endfor %}
             </ul>
           </li>
           <li class="nav-item dropdown ms-5">
             <a class="nav-link text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Théâtre et Humour
+              Humour et Théâtre
             </a>
             <ul class="dropdown-menu text-white" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="{{ path('app_maincategory', {slug: 'humour-et-theatre'} ) }}">Tout Humour et Théâtre</a></li>
                 {% for category in categories %}
                   {% if category.parent != null and category.parent.slug == 'humour-et-theatre' %}
-                    <li><a class="dropdown-item" href="#">{{ category.name }}</a></li>
+                    <li><a class="dropdown-item" href="{{ path('app_maincategory_category', {parent_slug : category.parent.slug, slug: category.slug} ) }}">{{ category.name }}</a></li>
                   {% endif %}
                 {% endfor %}
             </ul>
