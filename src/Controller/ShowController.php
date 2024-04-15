@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Show;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +18,7 @@ class ShowController extends AbstractController
         
         $shows = [];
         if (!$category->getParent()) {
-            $childCategories= $categoryRepository->findBy(['parent' => $category]);
+            $childCategories = $categoryRepository->findBy(['parent' => $category]);
 
             foreach ($childCategories as $childCategory) {
                 $categoryShows = $childCategory->getShows()->toArray();
@@ -31,8 +32,10 @@ class ShowController extends AbstractController
             throw $this->createNotFoundException('La catégorie demandée n\'existe pas.');
         }
 
+
         return $this->render('show/index.html.twig', [
             'shows' => $shows,
+            'category' => $category
         ]);
     }
 }
