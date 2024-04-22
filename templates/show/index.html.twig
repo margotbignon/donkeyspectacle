@@ -4,29 +4,9 @@
 
 {% block body %}
 
-	<div class="calendar-bloc">
-		<div class="calendar-wrapper">
-			<header>
-				<p class="current-date"></p>
-				<div class="icons">
-					<span id="previous-month" class"material-symbols-rounded"><i class="bi bi-caret-left"></i></span>
-					<span id="next-month" class"material-symbols-rounded"><i class="bi bi-caret-right"></i></span>
-				</div>
-			</header>
-			<div class="calendar">
-				<ul class="weeks">
-					<li>Lun</li>
-					<li>Mar</li>
-					<li>Mer</li>
-					<li>Jeu</li>
-					<li>Ven</li>
-					<li>Sam</li>
-					<li>Dim</li>
-				<ul class="days">
-				</ul>
-			</div>
-		</div>
-	</div>
+<div class="d-flex flex-column flex-lg-row align-items-start">
+	{{form(form)}}
+	<twig:CalendarFilter />
     <div class="d-flex flex-row justify-content-center align-items-center flex-wrap mt-5 w-75">
         {% for show in shows %}
             <div class="card shadow me-md-5 mb-5 " style="width: 18rem;">
@@ -48,6 +28,6 @@
         {% endfor %}
     </div>
 
-    
+</div>
 
 {% endblock %}

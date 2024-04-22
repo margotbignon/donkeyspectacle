@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Entity\Show;
+use App\Form\ShowFilterType;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -13,7 +15,7 @@ class ShowController extends AbstractController
 {
     #[Route('/{parent_slug}/{slug}', name: 'app_maincategory_category')]
     #[Route('/{slug}', name: 'app_maincategory')]
-    public function index(Category $category, CategoryRepository $categoryRepository): Response
+    public function index(Category $category, CategoryRepository $categoryRepository, Request $request): Response
     {
         
         $shows = [];
@@ -32,10 +34,14 @@ class ShowController extends AbstractController
             throw $this->createNotFoundException('La catégorie demandée n\'existe pas.');
         }
 
+        $form = $this->createForm(ShowFilterType::class);
+
+        $form->handleRequest($request);
 
         return $this->render('show/index.html.twig', [
             'shows' => $shows,
-            'category' => $category
+            'category' => $category,
+            'form' => $form
         ]);
     }
 }
